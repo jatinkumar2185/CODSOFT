@@ -33,22 +33,3 @@ cd contact_book
 pip install -r requirements.txt
 python app.py
 ```
-
-Then open **http://127.0.0.1:5000** in your browser.
-
-## API reference
-
-| Method | Route                    | Description                        |
-|--------|---------------------------|-------------------------------------|
-| GET    | `/api/contacts`           | List contacts (`?q=` search, `?letter=` filter) |
-| POST   | `/api/contacts`           | Create a contact                    |
-| PUT    | `/api/contacts/<id>`      | Update a contact                    |
-| DELETE | `/api/contacts/<id>`      | Delete a contact                    |
-
-## Notes for the internship submission
-- This satisfies **Task 5: Contact Book** from the CodSoft Python
-  Programming internship, built as a web app (Python backend + HTML/CSS/JS
-  frontend) rather than a command-line tool.
-- Push this folder to a GitHub repo named `CODSOFT_TASKSNO` alongside your
-  other completed tasks, and record a short demo video per the internship's
-  submission instructions.
