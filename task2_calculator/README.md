@@ -33,36 +33,3 @@ cd calculator_app
 pip install -r requirements.txt
 python app.py
 ```
-
-Then open **http://localhost:5001** in your browser.
-
-(Runs on port 5001 by default so it can run alongside the Task 1 To-Do app,
-which uses port 5000.)
-
-## API reference
-
-| Method | Endpoint          | Description                          |
-|--------|-------------------|----------------------------------------|
-| POST   | `/api/calculate`  | Perform a calculation                 |
-| GET    | `/api/history`    | Get recent calculation history        |
-| DELETE | `/api/history`    | Clear calculation history             |
-
-Example request body for `/api/calculate`:
-
-```json
-{ "a": 12, "b": 4, "op": "/" }
-```
-
-`op` must be one of `+`, `-`, `*`, `/`.
-
-Example response:
-
-```json
-{ "a": 12.0, "b": 4.0, "op": "/", "result": 3.0 }
-```
-
-## Notes
-
-- History is stored in memory and resets whenever the server restarts.
-- `debug=True` is set in `app.py` for local development; turn it off before
-  deploying anywhere public.
