@@ -38,32 +38,3 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Then open **http://localhost:5000** in your browser.
-
-## API reference
-
-| Method | Endpoint                     | Description                     |
-|--------|-------------------------------|----------------------------------|
-| GET    | `/api/tasks`                  | List all tasks                  |
-| POST   | `/api/tasks`                  | Create a task                   |
-| PATCH  | `/api/tasks/<id>`             | Update a task (partial)         |
-| DELETE | `/api/tasks/<id>`             | Delete a task                   |
-| POST   | `/api/tasks/clear-completed`  | Delete all completed tasks      |
-| GET    | `/api/stats`                  | Task count summary              |
-
-Example request body for creating a task:
-
-```json
-{
-  "title": "Finish Task 1",
-  "description": "Wire up the Flask API",
-  "priority": "High",
-  "due": "2026-08-01"
-}
-```
-
-## Notes
-
-- Data is stored in `data/tasks.json` — delete that file to reset the list.
-- `debug=True` is set in `app.py` for local development; turn it off before
-  deploying anywhere public.
