@@ -296,6 +296,10 @@ button, input, textarea{ font-family: inherit; }
   z-index: 10;
 }
 
+.modal-backdrop[hidden]{
+  display: none;
+}
+
 .index-card{
   position: relative;
   background: var(--paper);
