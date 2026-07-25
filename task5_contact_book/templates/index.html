@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="tray">
+
+    <!-- Alphabet rail (rolodex tabs) -->
+    <nav class="rail" aria-label="Jump to letter">
+      <button class="tab tab-all" data-letter="" aria-pressed="true">ALL</button>
+      <div class="tab-list" id="alphaTabs"></div>
+    </nav>
+
+    <div class="desk">
+
+      <header class="desk-head">
+        <h1 class="wordmark">Contact&nbsp;Book</h1>
+        <p class="tagline">A rolodex for the people you don't want to forget.</p>
+
+        <div class="slot">
+          <svg class="slot-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input id="searchInput" type="text" placeholder="Search by name or number…" autocomplete="off">
+        </div>
+      </header>
+
+      <p class="empty-state" id="emptyState" hidden>
+        This drawer is empty. Punch in your first card with the <strong>+ New Card</strong> button.
+      </p>
+
+      <section class="drawer" id="cardGrid" aria-live="polite"></section>
+
+    </div>
+  </div>
+
+  <button class="fab" id="addBtn" title="Add a contact">
+    <span class="fab-plus">+</span><span class="fab-label">New Card</span>
+  </button>
+
+  <!-- Card editor modal -->
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <form class="index-card" id="cardForm" novalidate>
+      <div class="index-card-notch"></div>
+      <h2 id="modalTitle">New Card</h2>
+
+      <label>
+        Name
+        <input type="text" id="fieldName" required>
+      </label>
+      <label>
+        Phone
+        <input type="text" id="fieldPhone" required>
+      </label>
+      <label>
+        Email
+        <input type="email" id="fieldEmail">
+      </label>
+      <label>
+        Address
+        <textarea id="fieldAddress" rows="2"></textarea>
+      </label>
+
+      <input type="hidden" id="fieldId">
+
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="cancelBtn">Cancel</button>
+        <button type="submit" class="btn-solid" id="saveBtn">File Card</button>
+      </div>
+      <p class="form-error" id="formError" hidden></p>
+    </form>
+  </div>
+
+  <!-- Delete confirmation -->
+  <div class="modal-backdrop" id="confirmBackdrop" hidden>
+    <div class="index-card confirm-card">
+      <div class="index-card-notch"></div>
+      <h2>Discard this card?</h2>
+      <p id="confirmText">This removes the contact for good.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="confirmCancel">Keep it</button>
+        <button type="button" class="btn-danger" id="confirmDelete">Discard</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
