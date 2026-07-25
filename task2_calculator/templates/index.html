@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>calculator.py — CodSoft</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <div class="tab"><span class="filename">calculator.py</span></div>
+    <div class="eyebrow">CODSOFT · TASK 2 · Flask backend</div>
+  </div>
+  <div class="content">
+    <p class="comment"># add, subtract, multiply, divide</p>
+    <h1>Calculator</h1>
+    <p class="sub">Every calculation is performed server-side in Python.</p>
+    <p class="conn" id="connStatus">● connecting…</p>
+
+    <div class="display">
+      <div class="expr" id="expr">0 + 0</div>
+      <div class="result" id="result">= 0</div>
+    </div>
+
+    <div class="inputs">
+      <input type="text" id="num1" placeholder="First number" inputmode="decimal" oninput="updateExpr()">
+      <input type="text" id="num2" placeholder="Second number" inputmode="decimal" oninput="updateExpr()">
+    </div>
+
+    <div class="ops">
+      <button class="op-btn active" data-op="+" onclick="setOp('+', this)">+</button>
+      <button class="op-btn" data-op="-" onclick="setOp('-', this)">−</button>
+      <button class="op-btn" data-op="*" onclick="setOp('*', this)">×</button>
+      <button class="op-btn" data-op="/" onclick="setOp('/', this)">÷</button>
+    </div>
+
+    <div class="actions">
+      <button class="go" id="goBtn" onclick="calculate()">Calculate</button>
+      <button class="clear" onclick="clearAll()">Clear</button>
+    </div>
+    <div class="error" id="error"></div>
+
+    <div class="history">
+      <h2>History <span class="hist-clear" onclick="clearHistory()">clear</span></h2>
+      <div id="historyList"><div class="history-empty">No calculations yet.</div></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

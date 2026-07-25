@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>todo_list.py — CodSoft</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <div class="tab"><span class="filename">todo_list.py</span></div>
+    <div class="eyebrow">CODSOFT · TASK 1 · Flask backend</div>
+  </div>
+  <div class="body">
+    <div class="gutter" id="gutter"></div>
+    <div class="content">
+      <p class="comment"># create, update, and track your to-do list</p>
+      <h1>To-Do List</h1>
+      <p class="sub">Backed by a Flask API — tasks are saved server-side in <code>data/tasks.json</code>.</p>
+      <p class="conn" id="connStatus">● connecting…</p>
+
+      <div class="form">
+        <div class="row">
+          <input type="text" id="title" placeholder="Task title">
+          <input type="text" id="desc" placeholder="Description (optional)">
+        </div>
+        <div class="row">
+          <select id="priority">
+            <option value="High">High priority</option>
+            <option value="Medium" selected>Medium priority</option>
+            <option value="Low">Low priority</option>
+          </select>
+          <input type="date" id="due">
+          <button class="btn-primary" onclick="addTask()">+ Add task</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input type="text" id="search" placeholder="Search tasks…" oninput="render()">
+        <select id="filterStatus" onchange="render()">
+          <option value="all">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="done">Done</option>
+          <option value="overdue">Overdue</option>
+        </select>
+        <select id="sortBy" onchange="render()">
+          <option value="created">Sort: newest</option>
+          <option value="due">Sort: due date</option>
+          <option value="priority">Sort: priority</option>
+        </select>
+        <button class="btn-ghost" onclick="clearCompleted()">Clear completed</button>
+      </div>
+
+      <ul class="tasks" id="taskList"></ul>
+      <div class="empty" id="emptyState" style="display:none;">No tasks match. Add one above, or clear your filters.</div>
+
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

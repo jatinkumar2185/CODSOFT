@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>rock_paper_scissors.py — CodSoft</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <div class="tab"><span class="filename">rock_paper_scissors.py</span></div>
+    <div class="eyebrow">CODSOFT · TASK 4 · Flask backend</div>
+  </div>
+  <div class="content">
+    <p class="comment"># rock beats scissors, scissors beat paper, paper beats rock</p>
+    <h1>Rock · Paper · Scissors</h1>
+    <p class="sub">The computer's move and the result are decided server-side in Python.</p>
+    <p class="conn" id="connStatus">● connecting…</p>
+
+    <div class="arena">
+      <div class="player">
+        <div class="label">You</div>
+        <div class="hand" id="userHand">✊</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="player">
+        <div class="label">Computer</div>
+        <div class="hand" id="computerHand">❓</div>
+      </div>
+    </div>
+
+    <div class="outcome" id="outcome">Make your move</div>
+
+    <div class="choices">
+      <button class="choice-btn" data-choice="rock" onclick="play('rock')">
+        <span class="emoji">✊</span>Rock
+      </button>
+      <button class="choice-btn" data-choice="paper" onclick="play('paper')">
+        <span class="emoji">✋</span>Paper
+      </button>
+      <button class="choice-btn" data-choice="scissors" onclick="play('scissors')">
+        <span class="emoji">✌️</span>Scissors
+      </button>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score-item">
+        <div class="n" id="scoreWins">0</div><div class="l">WINS</div>
+      </div>
+      <div class="score-item">
+        <div class="n" id="scoreLosses">0</div><div class="l">LOSSES</div>
+      </div>
+      <div class="score-item">
+        <div class="n" id="scoreTies">0</div><div class="l">TIES</div>
+      </div>
+      <div class="score-item">
+        <div class="n" id="scoreRounds">0</div><div class="l">ROUNDS</div>
+      </div>
+      <button class="reset-btn" onclick="resetScore()">Reset score</button>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
